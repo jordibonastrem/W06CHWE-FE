@@ -1,6 +1,6 @@
 const actionTypes = {
   getRobots: "GET_ROBOTS",
-  createRobot: "CREAE_ROBOT",
+  createRobot: "CREATE_ROBOT",
 };
 
 export default actionTypes;
