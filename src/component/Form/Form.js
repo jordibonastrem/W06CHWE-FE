@@ -181,7 +181,6 @@ function Form() {
 
   return (
     <>
-      <pre>{JSON.stringify(currentRobot, null, 2)}</pre>
       <div className={"container"}>
         {formState === "Button" && renderButton()}
         {(formState === "Post" || formState === "Put") && renderForm()}

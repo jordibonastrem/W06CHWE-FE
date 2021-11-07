@@ -13,6 +13,14 @@ export const createRobotThunk = (robot) => async (dispatch) => {
     process.env.REACT_APP_URL + paths.post,
     robot
   );
+  /*   const response = await fetch(process.env.REACT_APP_URL + paths.post, {
+    method: "POST",
+    body: JSON.stringify(robot),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const newRobot = await response.json(); */
 
   dispatch(createRobotAction(newRobot));
 };
