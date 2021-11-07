@@ -1,11 +1,11 @@
 import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRobotsThunk } from "../redux/thunks/robotThunks";
+import { createRobotThunk, getRobotsThunk } from "../redux/thunks/robotThunks";
 import { getCurrentRobotAction } from "../redux/actions/actionCreators";
 
 const useRobot = () => {
   const robots = useSelector(({ robots }) => robots);
-  const currentRobot = useSelector(({ robot }) => robot);
+  const currentRobot = useSelector(({ currentRobot }) => currentRobot);
   const [formState, setFormState] = useState("Button");
   const dispatch = useDispatch();
 
@@ -13,9 +13,12 @@ const useRobot = () => {
     dispatch(getRobotsThunk());
   }, [dispatch]);
 
-  const createRobot = useCallback(() => {
-    dispatch(createRobot());
-  }, [dispatch]);
+  const createRobot = useCallback(
+    (robot) => {
+      dispatch(createRobotThunk(robot));
+    },
+    [dispatch]
+  );
 
   const getCurrentRobot = (robot) => {
     dispatch(getCurrentRobotAction(robot));

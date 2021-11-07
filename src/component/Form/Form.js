@@ -1,7 +1,13 @@
 import useRobot from "../../hooks/useRobot";
 
 function Form() {
-  const { formState, setFormState } = useRobot();
+  const {
+    formState,
+    setFormState,
+    currentRobot,
+    getCurrentRobot,
+    createRobot,
+  } = useRobot();
 
   const formInitialValues = {
     name: "",
@@ -10,22 +16,45 @@ function Form() {
       creationDate: "",
       speed: "",
       endurance: "",
-      isItCute: "",
+      isItCute: true,
     },
   };
+
+  function onChangeInput(event) {
+    if (event.target.id === "name" || event.target.id === "imageSource") {
+      getCurrentRobot({
+        ...currentRobot,
+        [event.target.id]: event.target.value,
+      });
+    } else {
+      getCurrentRobot({
+        ...currentRobot,
+        features: {
+          ...currentRobot.features,
+          [event.target.id]: event.target.value,
+        },
+      });
+    }
+  }
 
   function onClickSubmitButton(event) {
     if (formState === "Post") {
       event.preventDefault();
       setFormState("Button");
+      createRobot(currentRobot);
     }
+  }
+
+  function onClickCreateButton() {
+    getCurrentRobot(formInitialValues);
+    setFormState("Post");
   }
 
   function renderButton() {
     return (
       <button
         className={"btn btn-warning"}
-        onClick={() => setFormState("Post")}
+        onClick={() => onClickCreateButton()}
       >
         Create
       </button>
@@ -47,6 +76,9 @@ function Form() {
             id="name"
             aria-describedby="name"
             placeholder="Enter name"
+            value={currentRobot.name}
+            onChange={(event) => onChangeInput(event)}
+            required
           />
         </div>
         <div className="form-group">
@@ -56,6 +88,9 @@ function Form() {
             className="form-control"
             id="imageSource"
             placeholder="Image URL"
+            value={currentRobot.imageSource}
+            onChange={(event) => onChangeInput(event)}
+            required
           />
           <small id="imageSpurce" className="form-text text-muted">
             Please provide a valid URL.
@@ -63,7 +98,14 @@ function Form() {
         </div>
         <div className="form-group">
           <label htmlFor="imageSource">Creation Date</label>
-          <input type="date" className="form-control" id="creationDate" />
+          <input
+            type="date"
+            className="form-control"
+            id="creationDate"
+            value={currentRobot.features.creationDate}
+            onChange={(event) => onChangeInput(event)}
+            required
+          />
         </div>
         <div className="form-group">
           <label htmlFor="speed">Speed</label>
@@ -73,6 +115,9 @@ function Form() {
             id="speed"
             min={0}
             max={10}
+            value={currentRobot.features.speed}
+            onChange={(event) => onChangeInput(event)}
+            required
           />
         </div>
         <div className="form-group">
@@ -83,6 +128,9 @@ function Form() {
             id="endurance"
             min={0}
             max={10}
+            value={currentRobot.features.endurance}
+            onChange={(event) => onChangeInput(event)}
+            required
           />
         </div>
 
@@ -133,6 +181,7 @@ function Form() {
 
   return (
     <>
+      <pre>{JSON.stringify(currentRobot, null, 2)}</pre>
       <div className={"container"}>
         {formState === "Button" && renderButton()}
         {(formState === "Post" || formState === "Put") && renderForm()}

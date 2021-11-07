@@ -1,5 +1,9 @@
 import { getRandomRobot, getRandomRobots } from "../../mocks/robotFactory";
-import { createRobotAction, getRobotsAction } from "./actionCreators";
+import {
+  createRobotAction,
+  getCurrentRobotAction,
+  getRobotsAction,
+} from "./actionCreators";
 import actionTypes from "./actionTypes";
 
 let robot;
@@ -34,6 +38,21 @@ describe("Given a createRobotAction", () => {
       };
 
       const result = createRobotAction(robot);
+
+      expect(result).toEqual(expected);
+    });
+  });
+});
+
+describe("Given a getCurrentRobotAction", () => {
+  describe("When it receives a robot", () => {
+    test("Then it should return getCurrentRobot action with the robot received", () => {
+      const expected = {
+        type: actionTypes.getCurrentRobot,
+        robot,
+      };
+
+      const result = getCurrentRobotAction(robot);
 
       expect(result).toEqual(expected);
     });
