@@ -1,9 +1,10 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRobotsThunk } from "../redux/thunks/robotThunks";
 
 const useRobot = () => {
   const robots = useSelector(({ robots }) => robots);
+  const [formState, setFormState] = useState("Button");
   const dispatch = useDispatch();
 
   const getRobots = useCallback(() => {
@@ -16,8 +17,10 @@ const useRobot = () => {
 
   return {
     robots,
+    formState,
     getRobots,
     createRobot,
+    setFormState,
   };
 };
 

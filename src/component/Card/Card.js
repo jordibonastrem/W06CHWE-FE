@@ -1,5 +1,5 @@
 import "./Card.scss";
-import { object, string, number, bool, shape } from "prop-types";
+import { string, number, bool, shape } from "prop-types";
 
 function Card({
   robot: {
@@ -46,7 +46,7 @@ Card.propTypes = {
     features: shape({
       speed: number.isRequired,
       endurance: number.isRequired,
-      creationDate: object.isRequired,
+      creationDate: string.isRequired,
       isItCute: bool,
     }).isRequired,
   }).isRequired,
