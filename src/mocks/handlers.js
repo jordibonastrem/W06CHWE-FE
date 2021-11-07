@@ -1,4 +1,4 @@
-import paths from "./";
+import paths from "../paths/paths";
 import { rest } from "msw";
 import { getRandomRobots } from "./robotFactory";
 
