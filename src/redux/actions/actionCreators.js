@@ -8,3 +8,7 @@ export const createRobotAction = (robot) => ({
   type: actionTypes.createRobot,
   robot,
 });
+export const getCurrentRobotAction = (robot) => ({
+  type: actionTypes.getCurrentRobot,
+  robot,
+});

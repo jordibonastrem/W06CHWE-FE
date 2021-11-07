@@ -8,8 +8,19 @@ export const getRobotsThunk = () => async (dispatch) => {
   dispatch(getRobotsAction(robots.data));
 };
 
-export const createRobotThunk = () => async (dispatch) => {
-  const robot = await axios.post(process.env.REACT_APP_URL + paths.post);
+export const createRobotThunk = (robot) => async (dispatch) => {
+  const newRobot = await axios.post(
+    process.env.REACT_APP_URL + paths.post,
+    robot
+  );
+  /*   const response = await fetch(process.env.REACT_APP_URL + paths.post, {
+    method: "POST",
+    body: JSON.stringify(robot),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const newRobot = await response.json(); */
 
-  dispatch(createRobotAction(robot));
+  dispatch(createRobotAction(newRobot));
 };
