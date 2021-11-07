@@ -1,5 +1,5 @@
+import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { render } from "../../../../w06ch1/node_modules/@testing-library/react/types";
 import configureStore from "../redux/store";
 
 const renderWithProviders = (component, initialState) => {
