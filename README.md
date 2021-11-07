@@ -1,5 +1,5 @@
-- Hacer thunk de post
 - Hacer hook
 - probar que van en app
 - componente card
+- hacer reducer/hook de currentRobot para form
 - componente form
