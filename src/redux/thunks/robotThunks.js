@@ -2,16 +2,14 @@ import axios from "axios";
 import paths from "../../paths/paths";
 import { createRobotAction, getRobotsAction } from "../actions/actionCreators";
 
-export const getRobotsThunks = () => async (dispatch) => {
-  const res = await axios.get(process.env.REACT_APP_URL + paths.get);
-  const robots = await res.json();
+export const getRobotsThunk = () => async (dispatch) => {
+  const robots = await axios.get(process.env.REACT_APP_URL + paths.get);
 
-  dispatch(getRobotsAction(robots));
+  dispatch(getRobotsAction(robots.data));
 };
 
 export const createRobotThunk = () => async (dispatch) => {
-  const res = await axios.post(process.env.REACT_APP_URL + paths.post);
-  const robot = await res.json();
+  const robot = await axios.post(process.env.REACT_APP_URL + paths.post);
 
   dispatch(createRobotAction(robot));
 };
