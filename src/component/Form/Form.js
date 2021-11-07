@@ -3,6 +3,17 @@ import useRobot from "../../hooks/useRobot";
 function Form() {
   const { formState, setFormState } = useRobot();
 
+  const formInitialValues = {
+    name: "",
+    imageSource: "",
+    features: {
+      creationDate: "",
+      speed: "",
+      endurance: "",
+      isItCute: "",
+    },
+  };
+
   function onClickSubmitButton(event) {
     if (formState === "Post") {
       event.preventDefault();
