@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a Card component, When it recieves a robot object Snapshot of the test 1`] = `
+<li
+  className="list-element col-4"
+>
+  <div
+    className="card"
+  >
+    <img
+      alt="Robot"
+      className="image card-img-top"
+      height="200px"
+      src="http://localhost:666/"
+      width="100%"
+    />
+    <div
+      className="card-body"
+    >
+      <h2
+        className="card-title"
+      >
+        Juanito
+      </h2>
+      <h3
+        className="card-subtitle mb-2 text-muted"
+      >
+        created on 1994
+      </h3>
+      <p
+        className=".card-text"
+      >
+        This robot has a speed of 3, endurance of 5 and it's kind of ugly.
+      </p>
+      <div
+        className="d-flex justify-content-around"
+      >
+        <button
+          className="btn btn-primary"
+        >
+          Edit
+        </button>
+        <button
+          className="btn btn-danger"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</li>
+`;
