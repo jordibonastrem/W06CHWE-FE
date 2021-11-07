@@ -8,7 +8,7 @@ const factoryRobots = Factory.define(({ sequence }) => ({
   features: {
     speed: datatype.number({ min: 0, max: 10 }),
     endurance: datatype.number({ min: 0, max: 10 }),
-    creationDate: lorem.word,
+    creationDate: lorem.word(),
     isItCute: datatype.boolean(),
   },
 }));

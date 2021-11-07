@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./App.scss";
-import Card from "./component/Card";
+import Card from "./component/Card/Card";
 import useRobot from "./hooks/useRobot";
 
 function App() {
