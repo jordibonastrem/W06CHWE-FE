@@ -4,11 +4,9 @@ import { createRobotAction, getRobotsAction } from "../actions/actionCreators";
 
 export const getRobotsThunk = () => async (dispatch) => {
   const token = localStorage.getItem(process.env.REACT_APP_LOCALSTORAGE_KEY);
-  console.log(token);
   const robots = await axios.get(process.env.REACT_APP_URL + robotPaths.get, {
     headers: { Authorization: "Bearer " + token },
   });
-  console.log(robots);
 
   dispatch(getRobotsAction(robots.data));
 };
