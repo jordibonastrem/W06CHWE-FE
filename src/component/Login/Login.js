@@ -1,7 +1,12 @@
+import { useState } from "react";
 import useUser from "../../hooks/useUser";
 
 function Login() {
   const { userLogin, user } = useUser();
+  const [loginFormState, setLoginFormState] = useState({
+    username: "",
+    password: "",
+  });
 
   function onClickLogin(event) {
     event.preventDefault();
@@ -11,29 +16,39 @@ function Login() {
     });
   }
 
+  function onChangeInput(event) {
+    setLoginFormState({
+      ...loginFormState,
+      [event.target.id]: event.target.value,
+    });
+  }
+
   return (
     <div className={"row"}>
       <pre>{JSON.stringify(user, null, 2)}</pre>
       <form className="form-signin text-center col-5" onSubmit={onClickLogin}>
         <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label htmlFor="inputEmail" className="sr-only">
-          Email address
+        <label htmlFor="username" className="sr-only">
+          Username
         </label>
         <input
-          type="email"
-          id="inputEmail"
+          type="text"
+          id="username"
           className="form-control"
-          placeholder="Email address"
+          placeholder="username"
+          value={loginFormState.username}
+          onChange={onChangeInput}
           required=""
-          autoFocus=""
         ></input>
-        <label htmlFor="inputPassword" className="sr-only">
+        <label htmlFor="password" className="sr-only">
           Password
         </label>
         <input
           type="password"
-          id="inputPassword"
+          id="password"
           className="form-control"
+          value={loginFormState.password}
+          onChange={onChangeInput}
           placeholder="Password"
           required=""
         ></input>
