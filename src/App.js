@@ -3,6 +3,7 @@ import "./App.scss";
 import Card from "./component/Card/Card";
 import useRobot from "./hooks/useRobot";
 import Form from "./component/Form/Form";
+import Header from "./component/Header/Header";
 
 function App() {
   const { robots, getRobots } = useRobot();
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <div className={"container"}>
         <h1>MY ROBOT LIST</h1>
         <Form />
