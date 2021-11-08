@@ -4,6 +4,7 @@ import Card from "./component/Card/Card";
 import useRobot from "./hooks/useRobot";
 import Form from "./component/Form/Form";
 import Header from "./component/Header/Header";
+import Login from "./component/Login/Login";
 
 function App() {
   const { robots, getRobots } = useRobot();
@@ -15,6 +16,7 @@ function App() {
   return (
     <>
       <Header />
+      <Login />
       <div className={"container"}>
         <h1>MY ROBOT LIST</h1>
         <Form />
