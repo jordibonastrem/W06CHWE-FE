@@ -34,8 +34,6 @@ describe("Given a Card component,", () => {
     test("Then it renders correctly its data", () => {
       render(<Card robot={robot} />);
 
-      console.log(robot);
-
       const name = screen.getByRole("heading", { name: robot.name });
       const imageSource = screen.getByAltText("Robot");
       const date = screen.getByRole("heading", {
