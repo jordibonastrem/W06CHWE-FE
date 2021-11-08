@@ -1,9 +1,9 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { usersPaths } from "../../paths/paths";
-import userLoginAction from "../actions/actionCreators";
+import { userLoginAction } from "../actions/actionCreators";
 
-export const loginUserThunk = (user) => async (dispatch) => {
+export const userLoginThunk = (user) => async (dispatch) => {
   const response = await axios.post(
     process.env.REACT_APP_URL + usersPaths.login,
     user
