@@ -1,26 +1,29 @@
 import axios from "axios";
-import paths from "../../paths/paths";
+import { robotPaths } from "../../paths/paths";
 import { createRobotAction, getRobotsAction } from "../actions/actionCreators";
 
 export const getRobotsThunk = () => async (dispatch) => {
-  const robots = await axios.get(process.env.REACT_APP_URL + paths.get);
+  const { token } = JSON.stringify(
+    localStorage.getItem(process.env.REACT_APP_LOCALSTORAGE_KEY)
+  );
+  const robots = await axios.get(process.env.REACT_APP_URL + robotPaths.get, {
+    headers: { Authorization: "Bearer " + token },
+  });
 
   dispatch(getRobotsAction(robots.data));
 };
 
 export const createRobotThunk = (robot) => async (dispatch) => {
-  const newRobot = await axios.post(
-    process.env.REACT_APP_URL + paths.post,
-    robot
+  const { token } = JSON.stringify(
+    localStorage.getItem(process.env.REACT_APP_LOCALSTORAGE_KEY)
   );
-  /*   const response = await fetch(process.env.REACT_APP_URL + paths.post, {
-    method: "POST",
-    body: JSON.stringify(robot),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const newRobot = await response.json(); */
+  const newRobot = await axios.post(
+    process.env.REACT_APP_URL + robotPaths.post,
+    robot,
+    {
+      headers: { Authorization: "Bearer " + token },
+    }
+  );
 
-  dispatch(createRobotAction(newRobot));
+  dispatch(createRobotAction(newRobot.data));
 };

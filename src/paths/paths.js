@@ -1,4 +1,4 @@
-export const paths = {
+export const robotPaths = {
   get: "robots/",
   post: `robots/create?token=${process.env.REACT_APP_TOKEN}`,
   getById: "robots/:idRobot",
