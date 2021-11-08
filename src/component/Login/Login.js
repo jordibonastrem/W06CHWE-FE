@@ -1,7 +1,20 @@
+import useUser from "../../hooks/useUser";
+
 function Login() {
+  const { userLogin, user } = useUser();
+
+  function onClickLogin(event) {
+    event.preventDefault();
+    userLogin({
+      username: "Farruquito",
+      password: "miau",
+    });
+  }
+
   return (
     <div className={"row"}>
-      <form className="form-signin text-center col-5">
+      <pre>{JSON.stringify(user, null, 2)}</pre>
+      <form className="form-signin text-center col-5" onSubmit={onClickLogin}>
         <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label htmlFor="inputEmail" className="sr-only">
           Email address
@@ -29,7 +42,7 @@ function Login() {
           type="submit"
         >
           Sign in
-        </button>{" "}
+        </button>
       </form>
     </div>
   );

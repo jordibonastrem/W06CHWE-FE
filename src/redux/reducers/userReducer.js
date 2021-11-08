@@ -10,13 +10,13 @@ const userReducer = (
   let newUser;
 
   switch (action.type) {
-    case actionTypes.loginUser:
+    case actionTypes.userLogin:
       newUser = {
         isAuthenticated: true,
         user: action.user,
       };
       break;
-    case actionTypes.logoutUser:
+    case actionTypes.userLogout:
       newUser = {
         isAuthenticated: false,
         user: {},
