@@ -12,9 +12,7 @@ export const userLoginThunk = (user) => async (dispatch) => {
     const token = response.data.token;
     const user = jwtDecode(token);
     dispatch(userLoginAction(user));
-    localStorage.setItem(
-      process.env.REACT_APP_LOCALSTORAGE_KEY,
-      JSON.stringify({ token: token })
-    );
+
+    localStorage.setItem(process.env.REACT_APP_LOCALSTORAGE_KEY, token);
   }
 };

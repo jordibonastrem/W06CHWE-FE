@@ -2,7 +2,7 @@ import { useState } from "react";
 import useUser from "../../hooks/useUser";
 
 function Login() {
-  const { userLogin, user } = useUser();
+  const { userLogin } = useUser();
   const [loginFormState, setLoginFormState] = useState({
     username: "",
     password: "",
@@ -25,7 +25,6 @@ function Login() {
 
   return (
     <div className={"row"}>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
       <form className="form-signin text-center col-5" onSubmit={onClickLogin}>
         <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label htmlFor="username" className="sr-only">
