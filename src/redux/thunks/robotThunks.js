@@ -6,7 +6,6 @@ export const getRobotsThunk = () => async (dispatch) => {
   const { token } = JSON.parse(
     localStorage.getItem(process.env.REACT_APP_LOCALSTORAGE_KEY)
   );
-  console.log(token);
 
   const robots = await axios.get(process.env.REACT_APP_URL + robotPaths.get, {
     headers: { Authorization: "Bearer " + token },
